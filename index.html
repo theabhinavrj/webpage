@@ -8,23 +8,36 @@
         function openYouTubeApp() {
             // Define the YouTube video link
             var videoId = "U_LlX4t0A9I";
-            // Construct the URL for YouTube intent
-            var intentUrl = "intent://www.youtube.com/watch?v=" + videoId + "#Intent;package=com.google.android.youtube;scheme=https;end";
+            // Construct the URL for YouTube app
+            var appUrl = "youtube://www.youtube.com/watch?v=" + videoId;
             // Construct the URL for fallback to web
             var webUrl = "https://www.youtube.com/watch?v=" + videoId;
 
-            // Try to open the YouTube app using intent
-            window.location = intentUrl;
+            // Check if the device is iOS
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-            // If it fails, fallback to web URL after 5 seconds
-            setTimeout(function() {
-                window.location = webUrl;
-            }, 5000);
+            if (isIOS) {
+                // For iOS, use a timer to redirect to the web URL after a delay
+                setTimeout(function() {
+                    window.location = webUrl;
+                }, 5000);
+                // Open YouTube app using custom URL scheme
+                window.location = appUrl;
+            } else {
+                // For other devices, use the intent URL scheme
+                var intentUrl = "intent://www.youtube.com/watch?v=" + videoId + "#Intent;package=com.google.android.youtube;scheme=https;end";
+                // Try to open the YouTube app using intent
+                window.location = intentUrl;
+                // If it fails, fallback to web URL after 5 seconds
+                setTimeout(function() {
+                    window.location = webUrl;
+                }, 5000);
+            }
         }
     </script>
 </head>
 <body onload="openYouTubeApp()">
     <h1>Redirecting to YouTube...</h1>
-    <p>If you are notttt redirected automatically, <a href="https://www.youtube.com/watch?v=U_LlX4t0A9I">click here</a>.</p>
+    <p>If you are not rrrredirected automatically, <a href="https://www.youtube.com/watch?v=U_LlX4t0A9I">click here</a>.</p>
 </body>
 </html>
