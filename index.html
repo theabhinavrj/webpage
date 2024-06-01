@@ -16,15 +16,15 @@
             // Try to open the YouTube app
             window.location = appUrl;
 
-            // If it fails, fallback to web URL
+            // If it fails, fallback to web URL after 5 seconds
             setTimeout(function() {
                 window.location = webUrl;
-            }, 500);
+            }, 5000);
         }
     </script>
 </head>
 <body onload="openYouTubeApp()">
     <h1>Redirecting to YouTube...</h1>
-    <p>If you are nottttt redirected automatically, <a href="https://www.youtube.com/watch?v=U_LlX4t0A9I">click here</a>.</p>
+    <p>If you are not redirected automatically, <a href="https://www.youtube.com/watch?v=U_LlX4t0A9I">click here</a>.</p>
 </body>
 </html>
