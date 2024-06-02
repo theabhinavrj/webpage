@@ -3,42 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Amazon Product</title>
-    <script type="text/javascript">
-        function openAmazonApp() {
-            // Define the Amazon product link
-            var productUrl = "https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G?pd_rd_w=iRqox&content-id=amzn1.sym.8d778d03-46f9-4c13-9e9c-08bc8c339f2c%3Aamzn1.symc.ca948091-a64d-450e-86d7-c161ca33337b&pf_rd_p=8d778d03-46f9-4c13-9e9c-08bc8c339f2c&pf_rd_r=0RGQ5VVRZEZDAMQKHXK2&pd_rd_wg=JWZeZ&pd_rd_r=c43cea4a-3500-4830-b423-97d45ad6e86d&pd_rd_i=B07S9D4J7G&linkCode=ll1&tag=ddig-21&linkId=2797bf0d98264923e7f87c9c7fab210f&language=en_IN&ref_=as_li_ss_tl";
-
-            // Construct the URL for Amazon app (Android)
-            var appUrlAndroid = "intent://www.amazon.in/dp/B07S9D4J7G#Intent;package=com.amazon.mShop.android.shopping;scheme=https;end";
-            // Construct the URL for Amazon app (iOS)
-            var appUrliOS = "amazon://www.amazon.in/dp/B07S9D4J7G";
-            // Construct the URL for fallback to web
-            var fallbackUrl = productUrl;
-
-            // Check if the device is iOS
+    <title>Redirecting...</title>
+    <script>
+        function detectAndRedirect() {
+            // Amazon product link
+            var amazonLink = "https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G";
+            
+            // Detect if the device is iOS
             var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
             if (isIOS) {
-                // Open Amazon app using universal link
-                window.location = appUrliOS;
-                // Fallback to the web URL after a delay
-                setTimeout(function() {
-                    window.location = fallbackUrl;
-                }, 2000);
+                // Redirect to the App Store
+                window.location.href = "https://apps.apple.com/in/app/amazon-shopping-offers-deals/id297606951";
             } else {
-                // Try to open the Amazon app using intent
-                window.location = appUrlAndroid;
-                // Fallback to the web URL after a delay
-                setTimeout(function() {
-                    window.location = fallbackUrl;
-                }, 2000);
+                // Intent URL for opening the Amazon app on Android
+                var intentURL = "intent:" + amazonLink + "#Intent;package=in.amazon.mShop.android.shopping;scheme=https;end";
+
+                // Redirect to intent URL
+                window.location.replace(intentURL);
             }
         }
     </script>
 </head>
-<body onload="openAmazonApp()">
+<body onload="detectAndRedirect()">
     <h1>Redirecting to Amazon...</h1>
-    <p>If you are nottt redirected automatically, <a href="https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G?pd_rd_w=iRqox&content-id=amzn1.sym.8d778d03-46f9-4c13-9e9c-08bc8c339f2c%3Aamzn1.symc.ca948091-a64d-450e-86d7-c161ca33337b&pf_rd_p=8d778d03-46f9-4c13-9e9c-08bc8c339f2c&pf_rd_r=0RGQ5VVRZEZDAMQKHXK2&pd_rd_wg=JWZeZ&pd_rd_r=c43cea4a-3500-4830-b423-97d45ad6e86d&pd_rd_i=B07S9D4J7G&linkCode=ll1&tag=ddig-21&linkId=2797bf0d98264923e7f87c9c7fab210f&language=en_IN&ref_=as_li_ss_tl">click here</a>.</p>
+    <p>If you are not redirecteddd automatically, <a href="https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G">click here</a>.</p>
 </body>
 </html>
