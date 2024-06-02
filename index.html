@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
     <script>
-        function detectAndRedirect() {
-            // Amazon product link
+        function redirect() {
             var amazonLink = "https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G";
             
-            // Detect if the device is iOS
+            // Check if the user is using an iOS device
             var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-            if (isIOS) {
-                // Redirect to the App Store
-                window.location.href = "https://apps.apple.com/in/app/amazon-shopping-offers-deals/id297606951";
-            } else {
-                // Intent URL for opening the Amazon app on Android
-                var intentURL = "intent:" + amazonLink + "#Intent;package=in.amazon.mShop.android.shopping;scheme=https;end";
+            // Check if the user is using an Android device
+            var isAndroid = /Android/.test(navigator.userAgent);
 
-                // Redirect to intent URL
+            if (isIOS) {
+                // Redirect iOS users using Universal Links
+                window.location.href = "https://apps.apple.com/in/app/amazon-india-shop-pay-minitv/id1478350915";
+            } else if (isAndroid) {
+                // Redirect Android users using JavaScript redirection
+                var intentURL = "intent://open?url=" + encodeURIComponent(amazonLink) + "#Intent;package=in.amazon.mShop.android.shopping;end";
                 window.location.replace(intentURL);
+            } else {
+                // Redirect other users to the Amazon website
+                window.location.href = amazonLink;
             }
         }
     </script>
 </head>
-<body onload="detectAndRedirect()">
+<body onload="redirect()">
     <h1>Redirecting to Amazon...</h1>
-    <p>If you are not redirecteddd automatically, <a href="https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G">click here</a>.</p>
+    <p>If you are not redirected aaautomatically, <a href="https://www.amazon.in/UBOARD-Electric-Distance-Fold-n-Carry-Ultra-Lightweight/dp/B07S9D4J7G">click here</a>.</p>
 </body>
 </html>
