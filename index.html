@@ -5,36 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Amazon Product</title>
 <script type="text/javascript">
-        function openAmazonApp() {
-            // Define the Amazon product link
-            var productUrl = "https://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N";
-            
-            // Check if the device is iOS
-            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    function openAmazonApp() {
+        // Define the Amazon product link
+        var productUrl = "https://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N";
+        
+        // Check if the device is iOS
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-            if (isIOS) {
-                // Attempt to open Amazon app if installed, else open web URL
-                window.location.href = "amzn://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N";
-                
-                // Timeout to redirect to web URL after 3 seconds
-                setTimeout(function() {
-                    window.location.href = productUrl;
-                }, 3000);
-            } else {
-                // For Android, use the intent URL scheme
-                var intentUrl = "intent://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N#Intent;package=in.amazon.mShop.android.shopping;scheme=https;end";
-                // Try to open the Amazon app using intent
-                window.location.href = intentUrl;
-                // If it fails, fallback to web URL after 3 seconds
-                setTimeout(function() {
-                    window.location.href = productUrl;
-                }, 3000);
-            }
+        if (isIOS) {
+            // Attempt to open Amazon app if installed, else open web URL
+            window.location.href = "https://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N";
+            
+            // Timeout to redirect to web URL after 3 seconds
+            setTimeout(function() {
+                window.location.href = productUrl;
+            }, 3000);
+        } else {
+            // For Android, use the intent URL scheme
+            var intentUrl = "intent://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N#Intent;package=in.amazon.mShop.android.shopping;scheme=https;end";
+            // Try to open the Amazon app using intent
+            window.location.href = intentUrl;
+            // If it fails, fallback to web URL after 3 seconds
+            setTimeout(function() {
+                window.location.href = productUrl;
+            }, 3000);
         }
-    </script>
+    }
+</script>
 </head>
 <body onload="openAmazonApp()">
-<h1>Redirecting to Amazooon...</h1>
+<h1>Redirecting to Amazonnn...</h1>
 <p>If you are not redirected automatically, <a href="https://www.amazon.in/LILAC-Adjustable-5-Shelf-Display-Storage/dp/B09CL26Q3N">click here</a>.</p>
 </body>
 </html>
